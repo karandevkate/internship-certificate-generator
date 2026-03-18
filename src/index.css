@@ -1,0 +1,33 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", serif;
+  --font-display: "Space Grotesk", sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-900 font-sans;
+  }
+}
+
+.certificate-container {
+  width: 1123px; /* A4 Landscape width in pixels at 96 DPI */
+  height: 794px; /* A4 Landscape height in pixels at 96 DPI */
+  background: white;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+}
+
+.geometric-shape {
+  position: absolute;
+  background: #BFDBFE; /* blue-200 */
+  z-index: 0;
+}
+
+.diamond {
+  transform: rotate(45deg);
+}
