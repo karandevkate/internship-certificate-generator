@@ -269,7 +269,7 @@ export default function App() {
                 </button>
                 <button onClick={emailAllCandidates} disabled={isGenerating || !startDate || !endDate} className="bg-slate-800 hover:bg-slate-900 text-white px-6 py-2.5 rounded-full flex items-center gap-2 font-semibold text-sm disabled:bg-slate-300">
                   <Mail size={18} />
-                  {isGenerating ? `Sending ${progress}%` : 'Email All (SMTP)'}
+                  {isGenerating ? `Sending ${progress}%` : 'Email All'}
                 </button>
               </>
             )}
