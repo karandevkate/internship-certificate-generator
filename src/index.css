@@ -22,6 +22,18 @@
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
 }
 
+.letter-container {
+  width: 794px; /* A4 Portrait width */
+  height: 1123px; /* A4 Portrait height */
+  background: white;
+  position: relative;
+  overflow: hidden;
+  padding: 60px 80px;
+  color: #1e293b;
+  font-family: 'Inter', sans-serif;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+}
+
 .geometric-shape {
   position: absolute;
   background: #BFDBFE; /* blue-200 */
@@ -30,4 +42,13 @@
 
 .diamond {
   transform: rotate(45deg);
+}
+
+.signature-stamp {
+  width: 120px;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
