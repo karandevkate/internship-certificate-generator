@@ -1,6 +1,7 @@
 import React from 'react';
 import { Candidate } from '../types';
 import SignatureBlock from './SignatureBlock';
+import { formatDate, calculateDuration } from '../utils/helpers';
 
 interface CertificateTemplateProps {
   candidate: Candidate | null;
@@ -14,28 +15,7 @@ const CertificateTemplate: React.FC<CertificateTemplateProps> = ({
   candidate,
   startDate,
   endDate,
-  issueDate,
-  place
 }) => {
-  const formatDate = (d: string) => {
-    if (!d) return '[Date]';
-    const date = new Date(d);
-    return date.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' }).replace(/\//g, '.');
-  };
-
-  const calculateDuration = (start: string, end: string) => {
-    if (!start || !end) return '';
-    const sDate = new Date(start);
-    const eDate = new Date(end);
-    const diffTime = Math.abs(eDate.getTime() - sDate.getTime());
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1;
-
-    const weeks = Math.ceil(diffDays / 7);
-    const months = Math.ceil(diffDays / 30);
-
-    return `${weeks} Weeks / ${months} Month${months > 1 ? 's' : ''}`;
-  };
-
   const duration = candidate?.duration || calculateDuration(startDate, endDate);
 
   return (
@@ -96,7 +76,7 @@ const CertificateTemplate: React.FC<CertificateTemplateProps> = ({
             {candidate?.educationStatus === 'graduated' ? 'A graduate of ' : 'A student of '}
             <span className="font-bold text-[#1E293B] decoration-[#A07B4A] underline underline-offset-4">{candidate?.college || 'College Name'}</span>
             {candidate?.educationStatus === 'graduated' ? ' having completed ' : ' Pursuing '}
-            <span className="font-semibold text-[#1E293B]">{candidate?.degree || 'Diploma'}</span> in <span className="font-semibold text-[#1E293B]">{candidate?.branch || ' branch name'}</span>
+            <span className="font-semibold text-[#1E293B]">{candidate?.degree || 'Degree'}</span> in <span className="font-semibold text-[#1E293B]">{candidate?.branch || 'Branch Name'}</span>
             {candidate?.board ? <span className="italic"> under {candidate.board}</span> : ''}, has successfully completed his/her internship.
           </p>
           
@@ -107,7 +87,7 @@ const CertificateTemplate: React.FC<CertificateTemplateProps> = ({
           </div>
           
           <p className="max-w-3xl mx-auto italic text-sm">
-            Work Area : <span className="font-bold text-[#0F172A] not-italic">{candidate?.workArea || 'module name'}</span>
+            Work Area : <span className="font-bold text-[#0F172A] not-italic">{candidate?.workArea || 'Module Name'}</span>
             <br />
             <span className="text-[10px] uppercase tracking-[0.3em] font-bold mt-3 block text-[#94A3B8]">We wish them success in all future endeavors</span>
           </p>

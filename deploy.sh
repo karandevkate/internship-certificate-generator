@@ -53,7 +53,7 @@ pm2 start server.cjs --name "cert-backend"
 pm2 save
 
 # 8. Configure Nginx
-echo "🌐 Configuring Nginx..."
+
 
 cat <<EOF | sudo tee $NGINX_CONF
 server {
@@ -62,6 +62,7 @@ server {
 
     root $PROJECT_DIR/dist;
     index index.html;
+    client_max_body_size 100M;
 
     location / {
         try_files \$uri \$uri/ /index.html;

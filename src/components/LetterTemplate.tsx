@@ -1,6 +1,7 @@
 import React from 'react';
 import { Candidate } from '../types';
 import SignatureBlock from './SignatureBlock';
+import { formatDate } from '../utils/helpers';
 
 interface LetterTemplateProps {
   candidate: Candidate | null;
@@ -13,8 +14,6 @@ const LetterTemplate: React.FC<LetterTemplateProps> = ({
   startDate,
   endDate
 }) => {
-  const formatDate = (d: string) => d ? new Date(d).toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' }) : '[Date]';
-
   return (
     <div className="letter-container bg-white relative">
       {/* Letter Head Background */}
@@ -26,7 +25,7 @@ const LetterTemplate: React.FC<LetterTemplateProps> = ({
         </div>
 
         <div className="space-y-6 text-slate-800 leading-[1.6] text-[15px] px-6 text-justify">
-          <p className="font-bold text-lg mb-8 text-left">Dear {candidate?.salutation || ''} {candidate?.name || 'Candidate Name'},</p>
+          <p className="font-bold text-lg mb-8 text-left">Dear {candidate?.salutation || 'Ms.'} {candidate?.name || 'Candidate Name'},</p>
 
           <p>Congratulations on completing your internship with <span className="font-bold">FIRST QUAD TECH SOLUTIONS</span>. Your dedication and hard work have been commendable. Throughout your internship, you consistently demonstrated exceptional skills, professionalism, and a strong work ethic. Your contributions to our organization have been invaluable.</p>
 
