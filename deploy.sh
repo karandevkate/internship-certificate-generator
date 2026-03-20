@@ -38,21 +38,16 @@ else
     echo "✅ PM2 is already installed"
 fi
 
-# 5. Install Project Dependencies
 echo "📦 Installing project dependencies..."
 npm install
 
-# 6. Build Frontend
 echo "🏗️ Building the React frontend..."
 npm run build
 
-# 7. Start/Restart Email Backend with PM2
 echo "⚙️ Starting the SMTP Email Server (server.cjs)..."
 pm2 delete cert-backend 2>/dev/null || true
 pm2 start server.cjs --name "cert-backend"
 pm2 save
-
-# 8. Configure Nginx
 
 
 cat <<EOF | sudo tee $NGINX_CONF
